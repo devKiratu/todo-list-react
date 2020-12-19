@@ -1,13 +1,68 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+		"Lucida Sans", Arial, sans-serif;
+	background-color: oldlace;
+	width: 60%;
+	min-width: 70vw;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
+.app {
+	height: 60%;
+	min-height: 70vh;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+
+.input-form {
+	padding: 20px;
+}
+.input-form > label {
+	display: block;
+	color: red;
+	padding-bottom: 20px;
+}
+
+#todo-item {
+	padding: 10px;
+	width: 80%;
+	outline: none;
+	border: 1px solid #999;
+	border-radius: 20px;
+}
+
+.input-form > button {
+	display: block;
+	padding: 5px;
+	width: 40%;
+	outline: none;
+	border: 1px solid #999;
+	border-radius: 20px;
+	margin: auto;
+	margin-top: 10px;
+	text-align: center;
+	justify-self: center;
+	cursor: pointer;
+}
+
+.renderedList {
+	list-style: none;
+	text-align: left;
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+	padding-bottom: 40px;
+}
+
+.renderedList > li {
+	border-bottom: 0.5px dashed #999;
+	padding: 5px 0;
 }
