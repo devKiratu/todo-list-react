@@ -83,3 +83,10 @@ body {
 	float: right;
 	font-size: medium;
 }
+
+.completed {
+	text-decoration: line-through;
+	font-style: italic;
+	color: #999;
+	opacity: 0.5;
+}

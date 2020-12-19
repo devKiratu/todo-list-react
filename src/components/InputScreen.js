@@ -8,13 +8,15 @@ export default function InputScreen() {
 		console.log("I was clicked");
 		e.preventDefault();
 		if (todo === "") return;
-		setTodoItems([...todoItems, todo]);
-		console.log(todoItems[0]);
+		setTodoItems([
+			...todoItems,
+			{ todoItem: todo, id: Date.now(), completed: false },
+		]);
 
 		setTodo("");
 	}
 
-	console.log(todoItems);
+	// console.log(todoItems);
 
 	return (
 		<div>

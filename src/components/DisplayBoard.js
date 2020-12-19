@@ -1,27 +1,34 @@
 import React from "react";
 
 export default function DisplayBoard({ items, setTodoItems }) {
-	const handleDoneBtn = (item, i) => {
-		console.log(item, i);
+	const handleDoneBtn = (item) => {
+		setTodoItems(
+			items.map((val) => {
+				if (val.id === item.id) {
+					return {
+						...val,
+						completed: !val.completed,
+					};
+				}
+				return val;
+			})
+		);
 	};
 
-	const handleRemoveBtn = (item, i) => {
-		console.log(item);
-		setTodoItems(items.filter((val) => items.indexOf(val) !== i));
+	const handleRemoveBtn = (item) => {
+		// console.log(item);
+		setTodoItems(items.filter((val) => val.id !== item.id));
 	};
 
 	return (
 		<ul className="renderedList">
-			{items.map((item, i) => (
-				<li key={i}>
-					<button className="doneBtn" onClick={() => handleDoneBtn(item, i)}>
-						✔
+			{items.map((item) => (
+				<li key={item.id} className={item.completed ? "completed" : ""}>
+					<button className="doneBtn" onClick={() => handleDoneBtn(item)}>
+						{item.completed ? "↩" : "✔"}
 					</button>
-					{item}
-					<button
-						className="removeBtn"
-						onClick={() => handleRemoveBtn(item, i)}
-					>
+					{item.todoItem}
+					<button className="removeBtn" onClick={() => handleRemoveBtn(item)}>
 						x
 					</button>
 				</li>
