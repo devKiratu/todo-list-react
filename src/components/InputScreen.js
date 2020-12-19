@@ -13,6 +13,7 @@ export default function InputScreen() {
 
 		setTodo("");
 	}
+
 	console.log(todoItems);
 
 	return (
@@ -29,7 +30,7 @@ export default function InputScreen() {
 				/>
 				<button type="submit">Add</button>
 			</form>
-			<DisplayBoard items={todoItems} />
+			<DisplayBoard items={todoItems} setTodoItems={setTodoItems} />
 		</div>
 	);
 }
