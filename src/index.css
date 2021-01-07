@@ -16,10 +16,11 @@ body {
 }
 
 .app {
-	height: 60%;
+	width: 500px;
 	min-height: 70vh;
-	border: 1px solid black;
+	border: 1px solid #999;
 	border-radius: 10px;
+	margin: 0 auto;
 }
 
 .input-form {
@@ -82,6 +83,12 @@ body {
 .removeBtn {
 	float: right;
 	font-size: medium;
+	opacity: 0;
+}
+
+.renderedList li:hover .removeBtn {
+	opacity: 1;
+	transition: ease 0.25s all;
 }
 
 .completed {
