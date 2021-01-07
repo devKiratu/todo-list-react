@@ -16,17 +16,29 @@ export default function InputScreen() {
 		setTodo("");
 	}
 
+	function setLocalItems() {
+		localStorage.setItem("todoList", JSON.stringify(todoItems));
+	}
+
 	function getLocalItems() {
 		let savedList = JSON.parse(localStorage.getItem("todoList"));
 		setTodoItems(savedList);
 	}
 
 	useEffect(() => {
-		getLocalItems();
+		let localData = JSON.parse(localStorage.getItem("todoList"));
+		if (localData === null) {
+			setLocalItems();
+			getLocalItems();
+		} else {
+			getLocalItems();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
-		localStorage.setItem("todoList", JSON.stringify(todoItems));
+		setLocalItems();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [todoItems]);
 	// console.log(todoItems);
 
