@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DisplayBoard from "./DisplayBoard";
 
 export default function InputScreen() {
 	const [todo, setTodo] = useState("");
 	const [todoItems, setTodoItems] = useState([]);
 	function handleSubmit(e) {
-		console.log("I was clicked");
+		// console.log("I was clicked");
 		e.preventDefault();
 		if (todo === "") return;
 		setTodoItems([
@@ -16,6 +16,18 @@ export default function InputScreen() {
 		setTodo("");
 	}
 
+	function getLocalItems() {
+		let savedList = JSON.parse(localStorage.getItem("todoList"));
+		setTodoItems(savedList);
+	}
+
+	useEffect(() => {
+		getLocalItems();
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem("todoList", JSON.stringify(todoItems));
+	}, [todoItems]);
 	// console.log(todoItems);
 
 	return (
