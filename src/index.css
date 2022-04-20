@@ -40,7 +40,7 @@ body {
 	border-radius: 20px;
 }
 
-.input-form > button {
+.add-button {
 	display: block;
 	padding: 5px;
 	width: 40%;

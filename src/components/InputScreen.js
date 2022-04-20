@@ -54,7 +54,9 @@ export default function InputScreen() {
 					value={todo}
 					onChange={(e) => setTodo(e.target.value)}
 				/>
-				<button type="submit">Add</button>
+				<button className="add-button" type="submit">
+					Add
+				</button>
 			</form>
 			<DisplayBoard items={todoItems} setTodoItems={setTodoItems} />
 		</div>
