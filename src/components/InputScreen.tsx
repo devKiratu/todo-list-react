@@ -1,10 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import DisplayBoard from "./DisplayBoard";
 
+export type TodoItem = {
+	todoItem: string;
+	id: number;
+	completed: boolean;
+};
+
+type LocalStorageItems = string | null;
+
 export default function InputScreen() {
-	const [todo, setTodo] = useState("");
-	const [todoItems, setTodoItems] = useState([]);
-	function handleSubmit(e) {
+	const [todo, setTodo] = useState<string>("");
+	const [todoItems, setTodoItems] = useState<TodoItem[]>([]);
+
+	function handleSubmit(e: FormEvent<HTMLFormElement>) {
 		// console.log("I was clicked");
 		e.preventDefault();
 		if (todo === "") return;
@@ -16,17 +25,20 @@ export default function InputScreen() {
 		setTodo("");
 	}
 
-	function setLocalItems() {
+	function setLocalItems(): void {
 		localStorage.setItem("todoList", JSON.stringify(todoItems));
 	}
 
-	function getLocalItems() {
-		let savedList = JSON.parse(localStorage.getItem("todoList"));
-		setTodoItems(savedList);
+	function getLocalItems(): void {
+		let items: LocalStorageItems = localStorage.getItem("todoList");
+		if (items !== null) {
+			let savedList = JSON.parse(items);
+			setTodoItems(savedList);
+		}
 	}
 
 	useEffect(() => {
-		let localData = JSON.parse(localStorage.getItem("todoList"));
+		let localData: LocalStorageItems = localStorage.getItem("todoList");
 		if (localData === null) {
 			setLocalItems();
 			getLocalItems();
